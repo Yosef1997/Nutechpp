@@ -1,3 +1,4 @@
+import http from '../../components/helper/http'
 import jwt from 'jwt-decode'
 
 export const signup = (email, password) => {
