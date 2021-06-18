@@ -5,6 +5,9 @@ import { Provider } from 'react-redux'
 import persistedStore from './redux/store'
 import { PersistGate } from 'redux-persist/integration/react'
 
+import PrivateRoute from './components/helper/privateRoute'
+
+
 import Home from './pages/home'
 import Detail from './pages/detail'
 import Input from './pages/input'
@@ -20,7 +23,7 @@ class App extends Component {
           <Switch>
             <Route path='/' exact component={Home} />
             <Route path='/detail' component={Detail} />
-            <Route path='/product' component={Input} />
+            <PrivateRoute path='/product' privateComponent={Input} />
           </Switch>
         </BrowserRouter>
       </PersistGate>
