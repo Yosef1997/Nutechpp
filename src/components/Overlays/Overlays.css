@@ -1,0 +1,44 @@
+.navbarImgBtn {
+  width: 56px;
+  height: 56px;
+  border-radius: 56px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.navbarImg {
+  width: 56px;
+  height: 56px;
+  border-radius: 56px;
+}
+
+.overlaysBtn {
+  display: block;
+  font-size: 16px;
+  font-weight: normal;
+  font-family: 'Mulish',sans-serif;
+  background-color: transparent;
+  color: #5F2EEA;
+  text-align: center;
+  padding: 10px;
+}
+
+.overlaysProfileBtn {
+  display: block;
+  font-size: 16px;
+  font-weight: normal;
+  font-family: 'Mulish',sans-serif;
+  background-color: transparent;
+  color: black;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.overlaysBtn:hover {
+  background-color: whitesmoke;
+  text-decoration: none;
+  color:black;
+  border: none;
+  cursor: pointer;
+}
