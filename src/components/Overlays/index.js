@@ -5,7 +5,7 @@ import ProfileIcon from '../../assets/profile.png'
 import './Overlays.css'
 import { withRouter, useHistory } from 'react-router-dom'
 import { useDispatch, connect } from 'react-redux'
-import { signout } from '../../Redux/Action/auth'
+import { signout } from '../../redux/action/auth'
 
 
 function index () {

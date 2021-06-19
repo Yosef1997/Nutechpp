@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Navbar.css'
+import './navbar.css'
 import { Navbar as NavbarBrowser, Nav, FormControl, Button } from 'react-bootstrap'
 import Brand from '../../assets/nutech.png'
 import Search from '../../assets/searchicon.png'
@@ -26,11 +26,11 @@ class Navbar extends Component {
     const { token } = this.props.auth
     console.log(this.state.search)
     return (
-      <NavbarBrowser collapseOnSelect expand="lg" bg="white" variant="light" className="containerNavbar">
-        <NavbarBrowser.Brand><Link to="/"><img src={Brand} alt="..." /></Link></NavbarBrowser.Brand>
+      <NavbarBrowser collapseOnSelect expand="lg" bg="white" variant="light" sticky="top" className="containerNavbar">
+        <NavbarBrowser.Brand><Link to="/"><img src={Brand} alt="..." className='navbarLogo' /></Link></NavbarBrowser.Brand>
         <NavbarBrowser.Toggle aria-controls="responsive-navbar-nav" />
         <NavbarBrowser.Collapse id="responsive-navbar-nav">
-          <Nav className="p-2 mr-auto">
+          <Nav className="ml-5">
             <div className="search-mobile">
               <FormControl type="text" placeholder="Search" className="input-search-mobile sm-2" />
               <Button type="submit" className="btn-search"><img src={Search} alt=".." /></Button>{' '}
@@ -62,7 +62,7 @@ class Navbar extends Component {
               ? (
                 <Overlays />
                 )
-              : (<Link to="/register"><Button type="submit" className="btn-signup ml-2 p-2">Sign up</Button>{' '}</Link>
+              : (<Link to="/register"><Button type="submit" className="btn-signup ml-4 p-2">Sign up</Button>{' '}</Link>
                 )
             }
           </Nav>
