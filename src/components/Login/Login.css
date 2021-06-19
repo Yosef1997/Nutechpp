@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+
+.loginLegend {
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../../assets//backimage.jpg');
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 50px 112px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginLegendText1 {
+  color: #FFFFFF;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  margin: 40px 0px 10px;
+}
+
+.loginForm {
+  padding: 50px 80px;
+  overflow-y: hidden;
+}
+
+.loginFormTitle {
+  color: #121212;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 26px;
+}
+
+.loginFormSubtitle {
+  color: #AAAAAA;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  margin: 10px 0px 25px;
+}
+
+.loginFormBtn {
+  background-color: #5F2EEA;
+  border-radius: 4px;
+  border-color: transparent;
+  width: 100%;
+  color: #F7F7FC;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 15px 0px;
+}
+
+.loginFormLogin {
+  color: #696F79;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+}
+
+.loginFormAccount {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  padding: 20px 27px;
+  color: #A0A3BD;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.textError {
+  color: red;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  margin-top: 10px;
+}
+
+.textSuccess {
+  /* color: red; */
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  margin-top: 10px;
+}
+
+@media only screen and (max-width: 992px) {
+  .loginLegend {
+    display: none;
+  }
+  .loginForm {
+    padding: 50px 24px;
+    overflow-y: hidden;
+  }
+  .loginFormTitle {
+    margin-bottom: 39px;
+  }
+  .loginFormSubtitle {
+    display: none;
+  }
+}

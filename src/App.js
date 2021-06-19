@@ -11,23 +11,27 @@ import PrivateRoute from './components/helper/privateRoute'
 import Home from './pages/home'
 import Detail from './pages/detail'
 import Input from './pages/input'
+import Register from './pages/register'
+import Login from './pages/login'
 
 
 class App extends Component {
-  render () {
+  render() {
     const { store, persistor } = persistedStore()
     return (
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <BrowserRouter>
-          <Switch>
-            <Route path='/' exact component={Home} />
-            <Route path='/detail' component={Detail} />
-            <Route path='/product' component={Input} />
-          </Switch>
-        </BrowserRouter>
-      </PersistGate>
-    </Provider>
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <BrowserRouter>
+            <Switch>
+              <Route path='/' exact component={Home} />
+              <Route path='/register' component={Register} />
+              <Route path='/login' component={Login} />
+              <Route path='/detail' component={Detail} />
+              <PrivateRoute path='/product' privateComponent={Input} />
+            </Switch>
+          </BrowserRouter>
+        </PersistGate>
+      </Provider>
     )
   }
 }
