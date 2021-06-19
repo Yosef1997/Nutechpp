@@ -35,8 +35,8 @@ class Navbar extends Component {
               <FormControl type="text" placeholder="Search" className="input-search-mobile sm-2" />
               <Button type="submit" className="btn-search"><img src={Search} alt=".." /></Button>{' '}
             </div>
-            <Nav.Link href="#nowShowing" className="navlink">Home</Nav.Link>
-            <Nav.Link href="#Cinemas" className="navlink">Input</Nav.Link>
+            <Link to="/" className='navlink'>Home</Link>
+            <Link to="/product" className='navlink'>Input</Link>
             {token
               ? (
                 <>
@@ -62,7 +62,7 @@ class Navbar extends Component {
               ? (
                 <Overlays />
                 )
-              : (<Link to="/register"><Button type="submit" className="btn-signup ml-4 p-2">Sign up</Button>{' '}</Link>
+              : (<Link to="/register"><Button type="submit" className="btn-signup ml-4 p-2">Sign up</Button></Link>
                 )
             }
           </Nav>

@@ -23,7 +23,7 @@ class App extends Component {
           <Switch>
             <Route path='/' exact component={Home} />
             <Route path='/detail' component={Detail} />
-            <PrivateRoute path='/product' privateComponent={Input} />
+            <Route path='/product' component={Input} />
           </Switch>
         </BrowserRouter>
       </PersistGate>
