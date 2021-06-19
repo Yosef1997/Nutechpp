@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+
+.viewAll {
+  background-color: #F5F6F8;
+  padding: 64px 130px;
+}
+
+.viewAllSort {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #DEDEDE;
+  padding-bottom: 20px;
+}
+
+.viewAllSortBy {
+  color: #414141;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.viewAllOrderBtn {
+  background-color: transparent;
+  border: none;
+  color: #414141;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.viewAllOrderBtn:hover {
+  color: #5F2EEA;
+  background-color: transparent;
+  border: none;
+}
+
+.viewAllOrderBtn:focus {
+  box-shadow: none;
+  background-color: #f57921;
+  color: white;
+  font-weight: bold;
+}
+
+.viewAllSortBtn {
+  background-color: transparent;
+  border: none;
+  color: #414141;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.viewAllSortBtn:hover {
+  color: #5F2EEA;
+  background-color: transparent;
+  border: none;
+}
+
+.viewAllSortBtn:focus {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.viewAllSortBtn svg {
+  color: #f57921;
+}
+.homeError {
+  color: #4c4d4f;
+  font-size: 48px;
+  text-align: center;
+  margin-top: 50px;
+}
+.viewAll-card {
+  text-align: center;
+  height: 452px;
+  padding: 24px;
+  border: 0.5px solid #DEDEDE;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.viewAll-img {
+  width: 159px;
+  height: 244px;
+  border-radius: 8px;
+}
+
+.viewAllCardTitle {
+  color: #14142B;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 8px;
+}
+
+.viewAllCardGenre {
+  color: #A0A3BD;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+  height: 35px;
+}
+
+.viewAllCardBtn {
+  border: 1px solid #5F2EEA;
+  border-radius: 4px;
+  text-align: center;
+  color: #5F2EEA;
+  padding: 10px 0;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.viewMore {
+  color: #5F2EEA;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 50px;
+}
+
+@media only screen and (max-width: 992px) {}
