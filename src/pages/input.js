@@ -1,9 +1,12 @@
 import React from 'react'
+import Navbar from '../components/Navbar'
+import Body from '../components/PostData'
 
 function input() {
   return (
     <div>
-      Input Screen
+      <Navbar />
+      <Body />
     </div>
   )
 }

@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+
+.postDataContainer {
+  background-color: #F5F6F8;
+  padding: 64px 130px;
+}
+
+.profileCardText1 {
+  color: #4E4B66;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+
+.postDataForm {
+  background-color: white;
+  border-radius: 16px;
+  padding: 50px 32px;
+}
+
+.profileCardImg {
+  width: 136px;
+  height: 136px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.profileCardBtn {
+  cursor: pointer;
+  margin: 0px auto 0px;
+  width: 136px;
+  height: 136px;
+  border-radius: 136px;
+}
+
+.profileCardBtn:active {
+  filter: drop-shadow(0px 8px 16px rgba(73, 83, 99, 0.24));
+  box-shadow: 10px rgba(7, 6, 6, 0.08);
+}
+
+.profilCardDeleteBtn {
+  color: red;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  margin-top: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.textError {
+  color: red;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  margin-top: 10px;
+}
+
+.textSuccess {
+  color: green;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  margin-top: 10px;
+}
+
+.ProfileInputBtn {
+  background-color: #f57921;
+  border-radius: 16px;
+  color: #F7F7FC;
+  font-family: 'Mulish',sans-serif  ;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  margin-top: 48px;
+  width: 360px;
+  height: 56px;
+}
+
+
+@media only screen and (max-width: 992px) {
+  .postDataContainer {
+    padding: 40px 24px;
+  }
+  .postDataFormImg {
+    padding: 30px 16px;
+  }
+}

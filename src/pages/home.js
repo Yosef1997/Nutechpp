@@ -7,7 +7,6 @@ function home() {
     <div>
       <Navbar />
       <Body />
-      Home Screen
     </div>
   )
 }

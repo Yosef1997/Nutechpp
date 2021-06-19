@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Input.css'
+import './input.css'
 import { Form } from 'react-bootstrap'
 
 export default class index extends Component {
