@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+
+.labelInput {
+  color: #4E4B66;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.inputForm {
+  border: 1px solid #DEDEDE;
+  border-radius: 16px;
+  width: 100%;
+  height: 64px;
+  margin-top: 14px;
+  padding: 0px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.inputPassword {
+  border: none;
+  width: 90%;
+  padding: 0px 30px;
+  background-color: transparent;
+}
+
+input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  transition: 0.5s;
+  padding: 0px 30px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.inputPasswordEye {
+  background-color: transparent;
+  border: none;
+}
+
+.inputPasswordEye:visited {
+  background-color: #FFFF;
+  box-shadow: none;
+
+}
+
+.inputPasswordEye:focus {
+  height: 100%;
+  background-color: #FFFF;
+  border: none;
+  box-shadow: none;
+}
+
+.inputPasswordEye:hover {
+  height: 100%;
+  background-color: #FFFF;
+  border: none;
+  box-shadow: none;
+}
+
+.inputPasswordEye:active {
+  background-color: #FFFF;
+  box-shadow: none;
+
+}
+
+svg {
+  color: #A0A3BD;
+}
+
+@media only screen and (max-width: 992px) {}

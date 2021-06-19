@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+
+
+.containerNavbar{
+    padding: 20px 100px;
+}
+.btn-signup-mobile {
+    display: none;
+}
+.nav-mobile {
+    display: none;
+}
+.nav-web {
+  display: flex;
+  align-items: center;
+}
+.search-mobile {
+    display: none;
+}
+.input-search-mobile {
+    border: none;
+}
+.input-search-web {
+    border: none;
+}
+.search-web {
+    border: 1px rgb(192, 190, 190) solid;
+    border-radius: 5px;
+    display: flex;
+    height: 40px;
+}
+.btn-search {
+    background-color: white;
+    border: none;
+}
+.btn-search:hover {
+    background-color: whitesmoke;
+    border: none;
+}
+.btn-signup {
+    color: white;
+    background-color: #5F2EEA;
+    width: 120px;
+    height: 40px;
+}
+.btn-signup:hover {
+    color: #5F2EEA;
+    background-color: whitesmoke;
+    border: none;
+    font-weight: bold;
+}
+p {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 12px;
+    color:gray;
+    font-family: 'Mulish', sans-serif;
+}
+.navlink {
+    color: black;
+    font-size: 20px;
+    font-family: 'Mulish',sans-serif;
+    font-weight: 600;
+    padding: 0px;
+    margin: 0px 20px;
+}
+
+.navbarImg {
+  width: 56px;
+  height: 56px;
+  border-radius: 56px;
+  margin-left: 20px;
+}
+
+@media only screen and (max-width: 992px) {
+    .containerNavbar{
+      padding: 25px 35px;
+    }
+
+    .btn-signup-mobile {
+        display: block;
+        font-size: 18px;
+        font-weight: bold;
+        font-family: 'Mulish',sans-serif;
+        background-color: transparent;
+        color: #5F2EEA;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .btn-signup-mobile:hover {
+        background-color: whitesmoke;
+        text-decoration: none;
+        color:black;
+        border: none;
+        cursor: pointer;
+    }
+    .nav-mobile {
+        display: block;
+    }
+    .search-mobile {
+        display: flex;
+        margin-top: 20px;
+        border: 1px rgb(192, 190, 190) solid;
+        border-radius: 5px;
+    }
+    .nav-web {
+        display: none;
+    }
+    .navlink {
+      text-align: center;
+      margin-top: 10px;
+    }
+}
