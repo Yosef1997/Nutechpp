@@ -1,5 +1,38 @@
 import http from '../../components/helper/http'
 
+export const getProduct = (token, search, sort, order, limit, page) => {
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: 'SET_PRODUCT_MESSAGE',
+        payload: ''
+      })
+      const results = await http(token).get(
+        `/product?search=${search !== undefined ? search : ''}&limit=${
+          limit !== undefined ? limit : 4
+        }&page=${page !== undefined ? page : 1}&sort=${
+          sort !== undefined ? sort : 'id'
+        }&order=${order !== undefined ? order : 'ASC'}`
+      )
+      dispatch({
+        type: 'GET_PRODUCT',
+        payload: results.data.results
+      })
+      dispatch({
+        type: 'PAGE_INFO_ALL_PRODUCT',
+        payload: results.data.pageInfo.nextLink
+      })
+    } catch (err) {
+      console.log(err)
+      const { message } = err.response.data
+      dispatch({
+        type: 'SET_PRODUCT_MESSAGE',
+        payload: message
+      })
+    }
+  }
+}
+
 export const createProduct = (token, data) => {
   return async (dispatch) => {
     try {
@@ -80,27 +113,17 @@ export const detailProduct = (token, id) => {
   }
 }
 
-export const getProduct = (token, search, sort, order, limit, page) => {
+export const deleteProduct = (token, id) => {
   return async (dispatch) => {
     try {
       dispatch({
         type: 'SET_PRODUCT_MESSAGE',
         payload: ''
       })
-      const results = await http(token).get(
-        `/product?search=${search !== undefined ? search : ''}&limit=${
-          limit !== undefined ? limit : 8
-        }&page=${page !== undefined ? page : 1}&sort=${
-          sort !== undefined ? sort : 'id'
-        }&order=${order !== undefined ? order : 'ASC'}`
-      )
+      const results = await http(token).delete(`/product/${id}`)
       dispatch({
-        type: 'GET_PRODUCT',
-        payload: results.data.results
-      })
-      dispatch({
-        type: 'PAGE_INFO_ALL_PRODUCT',
-        payload: results.data.pageInfo.nextLink
+        type: 'DELETE_PRODUCT',
+        message: results.data.message
       })
     } catch (err) {
       console.log(err)

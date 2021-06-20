@@ -1,38 +1,48 @@
 const initialState = {
-  token: null,
-  user: null,
+  product: null,
+  detail: null,
   message: '',
   errorMsg: ''
 }
 
 const productReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SIGN_UP': {
+    case 'GET_PRODUCT': {
       return {
         ...state,
-        message: action.payload
+        product: action.payload
       }
     }
-    case 'SIGN_IN': {
+    case 'CREATE_PRODUCT': {
       return {
         ...state,
-        token: action.payload,
-        user: action.user
+        message: action.message
       }
     }
-    case 'SET_AUTH_MESSAGE': {
+    case 'EDIT_PRODUCT': {
+      return {
+        ...state,
+        product: [...state.product,...action.payload],
+        message: action.message
+      }
+    }
+    case 'DETAIL_PRODUCT': {
+      return {
+        ...state,
+        detail: action.payload
+      }
+    }
+    case 'DELETE_PRODUCT': {
+      return {
+        ...state,
+        message: action.message
+      }
+    }
+    case 'SET_PRODUCT_MESSAGE': {
       return {
         ...state,
         message: '',
         errorMsg: action.payload
-      }
-    }
-    case 'SIGNOUT': {
-      return {
-        ...state,
-        token: null,
-        message: '',
-        errorMsg: ''
       }
     }
     default:
