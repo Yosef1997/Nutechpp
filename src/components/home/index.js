@@ -16,6 +16,7 @@ class index extends Component {
 
   async componentDidMount() {
     await this.props.getProduct()
+    this.setState({product: this.props.product.allProduct})
   }
 
   handleOrderBy = async () => {
@@ -79,7 +80,7 @@ class index extends Component {
               {product.map((item) => {
                 return (
                   <>
-                    <Col key={item.id} lg={3} className='mt-5 mx-0'>
+                    <Col key={item.productName} lg={3} className='mt-5 mx-0'>
                       <div className="viewAll-card">
                         <img src={`${URL}/upload/product/${item.picture}`} alt='...' className="viewAll-img" />
                         <div className="viewAllCardTitle">{item.productName}</div>

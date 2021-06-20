@@ -28,7 +28,8 @@ const productReducer = (state = initialState, action) => {
     case 'EDIT_PRODUCT': {
       return {
         ...state,
-        allProduct: [...state.product,...action.payload],
+        allProduct: [{...state.allProduct},{...action.payload}],
+        detail: {...state.detail,...action.payload},
         message: action.message
       }
     }
