@@ -21,6 +21,7 @@ class Navbar extends Component {
     const { token } = this.props.auth
     const { search } = this.state
     await this.props.getProduct(token, search)
+    this.props.history.push('/search')
   }
   render () {
     const { token } = this.props.auth

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './postdata.css'
 import ImgIcon from '../../assets/uploadimage.png'
-import { Container, Row, Col, Button } from 'react-bootstrap'
+import { Container, Row, Col, Button, Spinner } from 'react-bootstrap'
 import { Formik } from 'formik'
 import Input from '../Input'
 import { withRouter } from 'react-router-dom'
@@ -50,7 +50,6 @@ class index extends Component {
       'image/gif',
       'image/png'
     ]
-    const { token, user } = this.props.auth
     if (SUPPORTED_FORMATS.indexOf(value.type) === -1) {
       setTimeout(() => {
         this.setState({ isLoading: false, message: 'File not compatibel' })
@@ -60,9 +59,7 @@ class index extends Component {
         this.setState({ isLoading: false, message: 'File to large' })
       }, 2000)
     } else {
-      await this.props.editProduct(token, { id: user.id, picture: (value) })
       this.setState({ picture: (value) })
-      console.log(this.state.picture,'<<<<<<<<<<<<<<<<<<picture')
       setTimeout(() => {
         this.setState({ isLoading: false, message: 'Update profile succsefully', selectedFile: true })
       }, 2000)
@@ -72,21 +69,8 @@ class index extends Component {
     }, 6000)
   }
 
-  deletePicture = async () => {
-    this.setState({ isLoading: true })
-    const { token } = this.props.auth
-    await this.props.deletePicture(token, { id: this.props.auth.user.id })
-    setTimeout(() => {
-      this.setState({ isLoading: false, message: 'Delete picture profile successfully' })
-    }, 2000)
-    setTimeout(() => {
-      this.setState({ message: '', selectedFile: false })
-    }, 5000)
-  }
-
   async postProduct(values) {
     const { token } = this.props.auth
-    // const { user } = this.props.auth
     this.props.createProduct(token, {
       productName: values.productName,
       buyPrice: values.buyPrice,
@@ -100,10 +84,11 @@ class index extends Component {
     setTimeout(() => {
       this.setState({ isMessage: false })
     }, 5000)
+    this.props.history.push('/')
   }
 
   render() {
-    // const { isLoading, message, isMessage, selectedFile } = this.state
+    const { isLoading, message, picture, selectedFile } = this.state
     return (
       <Container fluid className='postDataContainer'>
         <Row>
@@ -116,20 +101,16 @@ class index extends Component {
               ref={fileInput => this.fileInput = fileInput}
             />
             <div onClick={() => this.fileInput.click()} className='profileCardBtn'>
-              {/* {user.picture === null
-                ? <img src={Profil} className='profileCardImg' />
-                : <img src={`${URL}/upload/product/${user.picture}`} className='profileCardImg' />
-              } */}
               <img src={ImgIcon} alt='...' className='profileCardImg' />
             </div>
-            {/* {isLoading
+            {picture !== '' ? <div className='textSuccess text-center'>Upload image success</div> : null }
+            {isLoading
               ? (<div className='d-flex flex-row justify-content-center mt-3'>
                 <Spinner animation="grow" size="md" variant="success" />
               </div>
                 )
               : (null)}
-            {user.picture !== null && !isLoading && message === '' ? <div onClick={this.deletePicture} className='profilCardDeleteBtn'>Delete Picture</div> : <div>Click icon for upload image</div>}
-            {message !== '' && selectedFile ? <div className='textSuccess text-center'>{message}</div> : <div className='textError text-center'>{message}</div>} */}
+            {message !== '' && selectedFile ? <div className='textSuccess text-center'>{message}</div> : <div className='textError text-center'>{message}</div>}
           </Col>
           <Col></Col>
           <Col lg={7} className='postDataForm'>

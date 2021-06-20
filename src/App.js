@@ -11,6 +11,7 @@ import PrivateRoute from './components/helper/privateRoute'
 import Home from './pages/home'
 import Detail from './pages/detail'
 import Input from './pages/input'
+import Search from './pages/search'
 import Register from './pages/register'
 import Login from './pages/login'
 
@@ -27,6 +28,7 @@ class App extends Component {
               <Route path='/register' component={Register} />
               <Route path='/login' component={Login} />
               <Route path='/detail' component={Detail} />
+              <Route path='/search' component={Search} />
               <PrivateRoute path='/product' privateComponent={Input} />
             </Switch>
           </BrowserRouter>
