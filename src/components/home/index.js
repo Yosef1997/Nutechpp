@@ -11,25 +11,28 @@ import http from '../helper/http'
 class index extends Component {
   state = {
     orderBy: true,
-    // movie: this.props.movie.searchMovie
+  }
+
+  async componentDidMount(){
+    await this.props.getProduct()
   }
 
   handleOrderBy = async () => {
     this.setState({ orderBy: !this.state.orderBy })
     const { token } = this.props.auth
     const { orderBy } = this.state
-    await this.props.searchMovie(token, '', 'name', `${orderBy ? 'DESC' : 'ASC'}`)
+    await this.props.getProduct(token, '', 'name', `${orderBy ? 'DESC' : 'ASC'}`)
     this.setState({ movie: this.props.movie.searchMovie })
   }
 
-  handleMovie = async (id) => {
+  handleProduct = async (id) => {
     const { token } = this.props.auth
-    await this.props.detailMovie(token, id)
+    await this.props.detailProduct(token, id)
     this.props.history.push('/movie')
   }
 
   handleViewMore = async () => {
-    const { pageInfoMovie } = this.props.movie
+    const { pageInfoMovie } = this.props.product
     const newData = await http().get(pageInfoMovie)
     await this.props.newLink(newData.data.pageInfo.nextLink)
     this.setState({ movie: [...this.state.movie, ...newData.data.results] })
@@ -38,6 +41,7 @@ class index extends Component {
   render() {
     const { orderBy } = this.state
     // const { pageInfoMovie } = this.props.movie
+    // const {product}
     return (
       <Container fluid className='viewAll'>
         <Row>
@@ -96,7 +100,7 @@ class index extends Component {
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-  movie: state.movie
+  product: state.product
 })
 
 const mapDispatchToProps = { getProduct, detailProduct, newLink }
