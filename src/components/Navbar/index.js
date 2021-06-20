@@ -33,7 +33,7 @@ class Navbar extends Component {
           <Nav className="ml-5">
             <div className="search-mobile">
               <FormControl type="text" placeholder="Search" className="input-search-mobile sm-2" />
-              <Button type="submit" className="btn-search"><img src={Search} alt=".." /></Button>{' '}
+              <Button variant="outline-light" type="submit" className="btn-search"><img src={Search} alt=".." /></Button>{' '}
             </div>
             <Link to="/" className='navlink'>Home</Link>
             <Link to="/product" className='navlink'>Input</Link>
