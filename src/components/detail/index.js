@@ -92,7 +92,6 @@ class index extends Component {
     this.setState({ isLoading: true })
     const { token } = this.props.auth
     await this.props.deleteProduct(token, this.props.product.detail.id)
-    console.log(this.props.product.detail.id)
     setTimeout(() => {
       this.setState({ isLoading: false, message: 'Delete product success' })
     }, 2000)
