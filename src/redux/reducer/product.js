@@ -1,6 +1,7 @@
 const initialState = {
-  product: null,
+  allProduct: null,
   detail: null,
+  pageInfoProduct: null,
   message: '',
   errorMsg: ''
 }
@@ -10,9 +11,14 @@ const productReducer = (state = initialState, action) => {
     case 'GET_PRODUCT': {
       return {
         ...state,
-        product: action.payload
+        allProduct: action.payload
       }
     }
+    case 'PAGE_INFO_ALL_PRODUCT':
+      return {
+        ...state,
+        pageInfoProduct: action.payload
+      }
     case 'CREATE_PRODUCT': {
       return {
         ...state,
@@ -22,7 +28,7 @@ const productReducer = (state = initialState, action) => {
     case 'EDIT_PRODUCT': {
       return {
         ...state,
-        product: [...state.product,...action.payload],
+        allProduct: [...state.product,...action.payload],
         message: action.message
       }
     }

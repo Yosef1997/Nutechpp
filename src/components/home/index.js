@@ -6,14 +6,15 @@ import { getProduct, detailProduct, newLink } from '../../redux/action/product'
 import { withRouter } from 'react-router'
 import http from '../helper/http'
 
-// const { REACT_APP_API_URL: URL } = process.env
+const { REACT_APP_API_URL: URL } = process.env
 
 class index extends Component {
   state = {
     orderBy: true,
+    product: this.props.product.allProduct
   }
 
-  async componentDidMount(){
+  async componentDidMount() {
     await this.props.getProduct()
   }
 
@@ -21,27 +22,26 @@ class index extends Component {
     this.setState({ orderBy: !this.state.orderBy })
     const { token } = this.props.auth
     const { orderBy } = this.state
-    await this.props.getProduct(token, '', 'name', `${orderBy ? 'DESC' : 'ASC'}`)
-    this.setState({ movie: this.props.movie.searchMovie })
+    await this.props.getProduct(token, '', 'productName', `${orderBy ? 'DESC' : 'ASC'}`)
+    this.setState({ product: this.props.product.allProduct })
   }
 
   handleProduct = async (id) => {
     const { token } = this.props.auth
     await this.props.detailProduct(token, id)
-    this.props.history.push('/movie')
+    this.props.history.push('/detail')
   }
 
   handleViewMore = async () => {
-    const { pageInfoMovie } = this.props.product
-    const newData = await http().get(pageInfoMovie)
+    const { pageInfoProduct } = this.props.product
+    const newData = await http().get(pageInfoProduct)
     await this.props.newLink(newData.data.pageInfo.nextLink)
-    this.setState({ movie: [...this.state.movie, ...newData.data.results] })
+    this.setState({ product: [...this.state.product, ...newData.data.results] })
   }
 
   render() {
-    const { orderBy } = this.state
-    // const { pageInfoMovie } = this.props.movie
-    // const {product}
+    const { orderBy, product } = this.state
+    const { pageInfoProduct } = this.props.product
     return (
       <Container fluid className='viewAll'>
         <Row>
@@ -68,30 +68,48 @@ class index extends Component {
           </Col>
         </Row>
         <Row>
-          <Col>
-            <div className='homeError'>There isn't product yet!</div>
-          </Col>
-          {/* {movie.map((item) => {
-            return (
-              <>
-                <Col key={item.id} lg={3} className='mt-5 mx-0'>
-                  <div className="viewAll-card">
-                    <img src={`${URL}/upload/movie/${item.picture}`} alt='...' className="viewAll-img" />
-                    <div className="viewAllCardTitle">{item.name}</div>
-                    <div className="viewAllCardGenre">Action, Adventure, Sci-Fi</div>
-                    <div onClick={() => this.handleMovie(item.id)} className="viewAllCardBtn">Details</div>
-                  </div>
-                </Col>
-              </>
-            )
-          })} */}
+          {product === null ?
+            <>
+              <Col>
+                <div className='homeError'>There isn't product yet!</div>
+              </Col>
+            </>
+            :
+            <>
+              {product.map((item) => {
+                return (
+                  <>
+                    <Col key={item.id} lg={3} className='mt-5 mx-0'>
+                      <div className="viewAll-card">
+                        <img src={`${URL}/upload/product/${item.picture}`} alt='...' className="viewAll-img" />
+                        <div className="viewAllCardTitle">{item.productName}</div>
+                        <div className="viewAllCardDetail">
+                          <div className="viewAllCardGenre">Purchase Price</div>
+                          <div className="viewAllCardTitle my-2">{`Rp ${item.buyPrice}`}</div>
+                        </div>
+                        <div className="viewAllCardDetail">
+                          <div className="viewAllCardGenre">Sold Price</div>
+                          <div className="viewAllCardTitle my-2">{`Rp ${item.soldPrice}`}</div>
+                        </div>
+                        <div className="viewAllCardDetail">
+                          <div className="viewAllCardGenre">Stock</div>
+                          <div className="viewAllCardTitle my-2">{item.stock}</div>
+                        </div>
+                        <div onClick={() => this.handleProduct(item.id)} className="viewAllCardBtn mt-3">Details</div>
+                      </div>
+                    </Col>
+                  </>
+                )
+              })}
+            </>
+          }
         </Row>
         <Row>
-          {/* <Col>
-            {pageInfoMovie !== null
+          <Col>
+            {pageInfoProduct !== null
               ? <div onClick={this.handleViewMore} className='viewMore'>View More</div>
               : null}
-          </Col> */}
+          </Col>
         </Row>
       </Container>
     )
