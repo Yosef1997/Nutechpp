@@ -1,7 +1,7 @@
 import http from '../../components/helper/http'
 import jwt from 'jwt-decode'
 
-export const signup = (email, password) => {
+export const register = (email, password) => {
   return async (dispatch) => {
     const params = new URLSearchParams()
     params.append('email', email)
@@ -13,7 +13,7 @@ export const signup = (email, password) => {
       })
       const results = await http().post('/auth/register', params)
       dispatch({
-        type: 'SIGN_UP',
+        type: 'REGISTER',
         payload: results.data.message
       })
     } catch (err) {
@@ -27,7 +27,7 @@ export const signup = (email, password) => {
   }
 }
 
-export const signin = (email, password) => {
+export const login = (email, password) => {
   return async (dispatch) => {
     const params = new URLSearchParams()
     params.append('email', email)
@@ -41,7 +41,7 @@ export const signin = (email, password) => {
       const token = results.data.results
       const user = jwt(token)
       dispatch({
-        type: 'SIGN_IN',
+        type: 'LOGIN',
         payload: token,
         user: user
       })
