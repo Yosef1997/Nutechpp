@@ -7,7 +7,7 @@ import Overlays from '../Overlays'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signout } from '../../redux/action/auth'
-import { searchMovie } from '../../redux/action/product'
+import { getProduct } from '../../redux/action/product'
 
 class Navbar extends Component {
   state = {
@@ -20,7 +20,7 @@ class Navbar extends Component {
   handleSearch = async () => {
     const { token } = this.props.auth
     const { search } = this.state
-    await this.props.searchMovie(token, search)
+    await this.props.getProduct(token, search)
   }
   render () {
     const { token } = this.props.auth
@@ -75,5 +75,5 @@ class Navbar extends Component {
 const mapStateToProps = (state) => ({
   auth: state.auth
 })
-const mapDispatchToProps = { signout, searchMovie }
+const mapDispatchToProps = { signout, getProduct }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Navbar))

@@ -9,7 +9,7 @@ import Google from '../../assets/Google-logo.jpg'
 import Input from '../Input'
 import InputPassword from '../InputPassword'
 import { connect } from 'react-redux'
-import { signin } from '../../redux/action/auth'
+import { login } from '../../redux/action/auth'
 
 class index extends Component {
   state = {
@@ -40,7 +40,7 @@ class index extends Component {
 
   async doSignIn(values) {
     this.setState({ isLoading: true })
-    await this.props.signin(values.email, values.password)
+    await this.props.login(values.email, values.password)
     setTimeout(() => {
       this.setState({ isLoading: false, isMessage: true })
     }, 3000)
@@ -179,6 +179,6 @@ const mapStateToProps = (state) => ({
   auth: state.auth
 })
 
-const mapDispatchToProps = { signin }
+const mapDispatchToProps = { login }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(index))

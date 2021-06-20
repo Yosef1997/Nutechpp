@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './home.css'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { searchMovie, detailMovie, newLink } from '../../redux/action/product'
+import { getProduct, detailProduct, newLink } from '../../redux/action/product'
 import { withRouter } from 'react-router'
 import http from '../helper/http'
 
@@ -99,6 +99,6 @@ const mapStateToProps = (state) => ({
   movie: state.movie
 })
 
-const mapDispatchToProps = { searchMovie, detailMovie, newLink }
+const mapDispatchToProps = { getProduct, detailProduct, newLink }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(index))

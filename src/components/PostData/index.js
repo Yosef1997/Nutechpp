@@ -4,13 +4,17 @@ import ImgIcon from '../../assets/uploadimage.png'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { Formik } from 'formik'
 import Input from '../Input'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { createProduct, editProduct } from '../../redux/action/product'
 
-export default class index extends Component {
+class index extends Component {
   state = {
     isLoading: false,
     message: '',
     isMessage: false,
-    selectedFile: false
+    selectedFile: false,
+    picture: ''
   }
 
   dataValidation = (values) => {
@@ -56,7 +60,9 @@ export default class index extends Component {
         this.setState({ isLoading: false, message: 'File to large' })
       }, 2000)
     } else {
-      await this.props.updateUser(token, { id: user.id, picture: (value) })
+      await this.props.editProduct(token, { id: user.id, picture: (value) })
+      this.setState({ picture: (value) })
+      console.log(this.state.picture,'<<<<<<<<<<<<<<<<<<picture')
       setTimeout(() => {
         this.setState({ isLoading: false, message: 'Update profile succsefully', selectedFile: true })
       }, 2000)
@@ -80,14 +86,13 @@ export default class index extends Component {
 
   async postProduct(values) {
     const { token } = this.props.auth
-    const { user } = this.props.auth
-    this.props.updateUser(token, {
-      id: user.id,
-      firstName: values.firstName,
-      lastName: values.lastName,
-      email: values.email,
-      phoneNumber: values.phoneNumber,
-      password: values.newPassword
+    // const { user } = this.props.auth
+    this.props.createProduct(token, {
+      productName: values.productName,
+      buyPrice: values.buyPrice,
+      soldPrice: values.soldPrice,
+      stock: values.stock,
+      picture: this.state.picture
     })
     setTimeout(() => {
       this.setState({ isLoading: false, isMessage: true })
@@ -113,7 +118,7 @@ export default class index extends Component {
             <div onClick={() => this.fileInput.click()} className='profileCardBtn'>
               {/* {user.picture === null
                 ? <img src={Profil} className='profileCardImg' />
-                : <img src={`${URL}/upload/profile/${user.picture}`} className='profileCardImg' />
+                : <img src={`${URL}/upload/product/${user.picture}`} className='profileCardImg' />
               } */}
               <img src={ImgIcon} alt='...' className='profileCardImg' />
             </div>
@@ -191,7 +196,7 @@ export default class index extends Component {
                     {/* <Button variant='secondary' disabled className="ProfileInputBtn">Save Product</Button> */}
                     <Button variant='outline-light' onClick={handleSubmit} className="ProfileInputBtn">Save Product</Button>
                   </div>
-                </>                
+                </>
               )}
 
             </Formik>
@@ -201,3 +206,10 @@ export default class index extends Component {
     )
   }
 }
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  product: state.product
+})
+const mapDispatchToProps = { createProduct, editProduct }
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(index))
