@@ -56,7 +56,7 @@ class Navbar extends Component {
                 onChange={(event) => this.setState({ search: event.target.value })}
                 className="input-search-mobile sm-2"
               />
-              <Button type="submit" onClick={this.handleSearch} className="btn-search"><img src={Search} alt=".." /></Button>{' '}
+              <Button variant="outline-light" type="submit" onClick={this.handleSearch} className="btn-search"><img src={Search} alt=".." /></Button>{' '}
             </div>
             {token
               ? (

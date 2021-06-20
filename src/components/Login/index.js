@@ -148,7 +148,7 @@ class index extends Component {
                           )
                           : (
                             <div>
-                              < Button onClick={handleSubmit} className="loginFormBtn">Sign In</Button>
+                              < Button variant="outline-light" onClick={handleSubmit} className="loginFormBtn">Sign In</Button>
                             </div>
                           )}
                       </>
@@ -156,7 +156,7 @@ class index extends Component {
                 </>
               )}
             </Formik>
-            <div className="loginFormLogin mt-3">Forgot your password? <span><Link to='/forgetpassword' style={{ color: '#5F2EEA' }}>Reset now</Link></span></div>
+            <div className="loginFormLogin mt-3">Forgot your password? <span><Link to='/forgetpassword' style={{ color: '#f57921' }}>Reset now</Link></span></div>
             <div className="loginFormLogin my-2">or</div>
             <div className='d-flex justify-content-between'>
               <Link className="loginFormAccount">
