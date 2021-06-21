@@ -22,11 +22,11 @@
   padding: 50px 32px;
 }
 
-.profileCardImg {
+.detailCardImg {
   width: 136px;
   height: 136px;
-  border-radius: 16px;
-  object-fit: cover;
+  border-radius: 16px solid;
+  object-fit: contain;
 }
 
 .profileCardBtn {
@@ -71,7 +71,7 @@
   margin-top: 10px;
 }
 
-.ProfileInputBtn {
+.UpdateInputBtn {
   background-color: #f57921;
   border-radius: 16px;
   color: #F7F7FC;
@@ -85,7 +85,7 @@
   height: 56px;
 }
 
-.ProfileDeleteBtn {
+.UpdateDeleteBtn {
   background-color: #f52133;
   border-radius: 16px;
   color: #F7F7FC;

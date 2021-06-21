@@ -21,11 +21,11 @@ class Navbar extends Component {
     const { token } = this.props.auth
     const { search } = this.state
     await this.props.getProduct(token, search)
+    console.log(this.state.search)
     this.props.history.push('/search')
   }
-  render () {
+  render() {
     const { token } = this.props.auth
-    console.log(this.state.search)
     return (
       <NavbarBrowser collapseOnSelect expand="lg" bg="white" variant="light" sticky="top" className="containerNavbar">
         <NavbarBrowser.Brand><Link to="/"><img src={Brand} alt="..." className='navbarLogo' /></Link></NavbarBrowser.Brand>
@@ -33,8 +33,18 @@ class Navbar extends Component {
         <NavbarBrowser.Collapse id="responsive-navbar-nav">
           <Nav className="ml-5">
             <div className="search-mobile">
-              <FormControl type="text" placeholder="Search" className="input-search-mobile sm-2" />
-              <Button variant="outline-light" type="submit" className="btn-search"><img src={Search} alt=".." /></Button>{' '}
+              <FormControl
+                type="text"
+                onChange={(event) => this.setState({ search: event.target.value })}
+                placeholder="Search"
+                className="input-search-mobile sm-2" />
+              <Button
+                variant="outline-light"
+                type="submit"
+                onClick={this.handleSearch}
+                className="btn-search">
+                <img src={Search} alt=".." />                
+              </Button>
             </div>
             <Link to="/" className='navlink'>Home</Link>
             <Link to="/product" className='navlink'>Input</Link>
@@ -44,9 +54,9 @@ class Navbar extends Component {
                   <Link to="/profile" className="btn-signup-mobile">Profile</Link>
                   <div onClick={this.handleLogOut} className="btn-signup-mobile">Sign out</div>
                 </>
-                )
+              )
               : (<Link to="/register" className="btn-signup-mobile">Sign up</Link>
-                )}
+              )}
             <p className="nav-mobile">© 2021 Nutech. All Rights Reserved.</p>
           </Nav>
           <Nav className="nav-web">
@@ -62,9 +72,9 @@ class Navbar extends Component {
             {token
               ? (
                 <Overlays />
-                )
+              )
               : (<Link to="/register"><Button type="submit" className="btn-signup ml-4 p-2">Sign up</Button></Link>
-                )
+              )
             }
           </Nav>
         </NavbarBrowser.Collapse>

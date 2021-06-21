@@ -61,7 +61,7 @@ class index extends Component {
     } else {
       this.setState({ picture: (value) })
       setTimeout(() => {
-        this.setState({ isLoading: false, message: 'Update profile succsefully', selectedFile: true })
+        this.setState({ isLoading: false, message: 'Add image success', selectedFile: true })
       }, 2000)
     }
     setTimeout(() => {
@@ -89,6 +89,7 @@ class index extends Component {
 
   render() {
     const { isLoading, message, picture, selectedFile } = this.state
+    console.log(picture)
     return (
       <Container fluid className='postDataContainer'>
         <Row>
@@ -102,15 +103,16 @@ class index extends Component {
             />
             <div onClick={() => this.fileInput.click()} className='profileCardBtn'>
               <img src={ImgIcon} alt='...' className='profileCardImg' />
+              <div className='UploadImage'>Click icon for add image</div>
             </div>
-            {picture !== '' ? <div className='textSuccess text-center'>Upload image success</div> : null }
+            {picture !== '' && !isLoading && message ==='' ? <div className='textSuccess text-center mt-5'>Upload image success</div> : null }
             {isLoading
-              ? (<div className='d-flex flex-row justify-content-center mt-3'>
+              ? (<div className='d-flex flex-row justify-content-center mt-5'>
                 <Spinner animation="grow" size="md" variant="success" />
               </div>
                 )
               : (null)}
-            {message !== '' && selectedFile ? <div className='textSuccess text-center'>{message}</div> : <div className='textError text-center'>{message}</div>}
+            {message !== '' && selectedFile ? <div className='textSuccess text-center mt-5'>{message}</div> : <div className='textError text-center'>{message}</div>}
           </Col>
           <Col></Col>
           <Col lg={7} className='postDataForm'>

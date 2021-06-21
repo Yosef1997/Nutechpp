@@ -47,10 +47,11 @@ class index extends Component {
     const FILE_SIZE = 100 * 1024
     const SUPPORTED_FORMATS = [
       'image/jpg',
+      'image/jpeg',
       'image/png'
     ]
     const { token } = this.props.auth
-    const {id} = this.props.product.detail
+    const { id } = this.props.product.detail
     if (SUPPORTED_FORMATS.indexOf(value.type) === -1) {
       setTimeout(() => {
         this.setState({ isLoading: false, message: 'File not compatibel' })
@@ -58,6 +59,10 @@ class index extends Component {
     } else if (FILE_SIZE < value.size) {
       setTimeout(() => {
         this.setState({ isLoading: false, message: 'File to large' })
+      }, 2000)
+    } else if (token === null) {
+      setTimeout(() => {
+        this.setState({ isLoading: false, message: 'Sign in before edit product' })
       }, 2000)
     } else {
       await this.props.editProduct(token, id, { picture: (value) })
@@ -72,7 +77,7 @@ class index extends Component {
 
   async updateProduct(values) {
     const { token } = this.props.auth
-    const {id} = this.props.product.detail
+    const { id } = this.props.product.detail
     this.props.editProduct(token, id, {
       productName: values.productName,
       buyPrice: values.buyPrice,
@@ -85,7 +90,11 @@ class index extends Component {
     setTimeout(() => {
       this.setState({ isMessage: false })
     }, 5000)
-    this.props.history.push('/')
+    if(token===null){
+      this.props.history.push('/register')
+    } else {
+      this.props.history.push('/')
+    }
   }
 
   deleteProduct = async () => {
@@ -98,13 +107,17 @@ class index extends Component {
     setTimeout(() => {
       this.setState({ message: '', selectedFile: false })
     }, 5000)
-    this.props.history.push('/')
+    if(token===null){
+      this.props.history.push('/register')
+    } else {
+      this.props.history.push('/')
+    }
   }
 
   render() {
     const { isLoading, message, selectedFile } = this.state
     const { detail } = this.props.product
-    
+
     return (
       <Container fluid className='postDataContainer'>
         <Row>
@@ -118,15 +131,15 @@ class index extends Component {
             />
             <div onClick={() => this.fileInput.click()} className='profileCardBtn'>
               {detail.picture === null
-                ? <img src={ImgIcon} alt='..' className='profileCardImg' />
-                : <img src={`${URL}/upload/product/${detail.picture}`} alt='...' className='profileCardImg' />
+                ? <img src={ImgIcon} alt='..' className='detailCardImg' />
+                : <img src={`${URL}/upload/product/${detail.picture}`} alt='...' className='detailCardImg' />
               }
             </div>
             {isLoading
               ? (<div className='d-flex flex-row justify-content-center mt-3'>
                 <Spinner animation="grow" size="md" variant="success" />
               </div>
-                )
+              )
               : (null)}
             {detail.picture !== null || !isLoading || message === '' ? <div className='profilCardDeleteBtn'>Click icon for edit picture</div> : <div>Click icon for upload image</div>}
             {message !== '' && selectedFile ? <div className='textSuccess text-center'>{message}</div> : <div className='textError text-center'>{message}</div>}
@@ -193,8 +206,12 @@ class index extends Component {
                     {errors.stock ? (<div className='textError'>{errors.stock}</div>) : (null)}
                   </div>
                   <div className='d-flex justify-content-between'>
-                    <Button variant='outline-light' onClick={handleSubmit} className="ProfileInputBtn">Save Product</Button>
-                    <Button variant='outline-light' onClick={this.deleteProduct} className="ProfileDeleteBtn">Delete Product</Button>
+                    <div className='w-50'>
+                      <Button variant='outline-light' onClick={handleSubmit} className="UpdateInputBtn">Update Detail</Button>
+                    </div>
+                    <div>
+                      <Button variant='outline-light' onClick={this.deleteProduct} className="UpdateDeleteBtn">Delete Product</Button>
+                    </div>
                   </div>
                 </>
               )}

@@ -13,11 +13,6 @@ class index extends Component {
     orderBy: true,
   }
 
-  async componentDidMount() {
-    await this.props.getProduct()
-    this.setState({product: this.props.product.allProduct})
-  }
-
   handleOrderBy = async () => {
     this.setState({ orderBy: !this.state.orderBy })
     const { token } = this.props.auth

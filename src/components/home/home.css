@@ -92,6 +92,7 @@
   width: 159px;
   height: 244px;
   border-radius: 8px;
+  object-fit: contain;
 }
 
 .viewAllCardTitle {

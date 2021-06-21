@@ -53,6 +53,16 @@
   cursor: pointer;
 }
 
+.UploadImage {
+  color: #4E4B66;
+  font-family: 'Mulish',sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  margin: 10px 0px;
+  text-align: center;
+}
+
 .textError {
   color: red;
   font-family: 'Mulish',sans-serif;
